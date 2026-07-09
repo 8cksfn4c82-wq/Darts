@@ -1,0 +1,99 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --accent-color: #00e676;
+    --btn-bg: #1e1e1e;
+    --btn-active: #ffc107;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+#app {
+    width: 100%;
+    max-width: 500px;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hidden { display: none !important; }
+
+h1, h2 { text-align: center; margin: 10px 0; }
+
+button {
+    background-color: var(--btn-bg);
+    color: white;
+    border: 2px solid #333;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:active { filter: brightness(1.3); }
+
+.menu-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Grille du Scoreboard */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+th, td {
+    border: 1px solid #444;
+    padding: 8px;
+    text-align: center;
+}
+
+.score-display {
+    color: var(--accent-color);
+    font-weight: bold;
+}
+
+/* Clavier d'entrée */
+#targets-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.modifier-row {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.modifier-row button { flex: 1; }
+.modifier-row button.active {
+    background-color: var(--btn-active);
+    color: black;
+    border-color: var(--btn-active);
+}
+
+.action-row {
+    display: flex;
+    gap: 5px;
+}
+.action-row button { flex: 1; }
+.btn-miss { background-color: #cf6679; }
+.btn-undo { background-color: #3700b3; }
