@@ -46,12 +46,17 @@ function updatePlayerInputs() {
 }
 
 // --- LOGIQUE DE GÉNÉRATION DES NUMÉROS ---
-function generateCricketNumbers() {
+function function generateCricketNumbers() {
     let pool = Array.from({length: 11}, (_, i) => i + 10); // [10, 11, ..., 20]
     let shuffled = pool.sort(() => 0.5 - Math.random());
-    let selected = shuffled.slice(0, 5); // 5 numéros uniques
-    selected.push('BULL'); // Le Bull est TOUJOURS présent
+    let selected = shuffled.slice(0, 5); // Prend 5 numéros uniques au hasard
+    
+    // TRI PAR ORDRE DÉCROISSANT (du plus grand au plus petit)
+    selected.sort((a, b) => b - a);
+    
+    selected.push('BULL'); // Le Bull est ajouté tout en bas
     return selected;
+}
 }
 
 // --- INITIALISATION DE LA PARTIE ---
