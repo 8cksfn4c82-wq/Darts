@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Cricket Random</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon.png">
+</head>
+<body>
+    <div id="app">
+        <section id="screen-home" class="screen">
+            <h1>Cricket Random</h1>
+            <div class="menu-buttons">
+                <button id="btn-new-game" onclick="showScreen('screen-setup')">Nouvelle Partie</button>
+                <button id="btn-resume-game" onclick="resumeGame()" disabled>Reprendre la partie</button>
+                <button id="btn-stats" onclick="showStats()">Statistiques</button>
+            </div>
+        </section>
+
+        <section id="screen-setup" class="screen hidden">
+            <h2>Nouvelle Partie</h2>
+            <div class="setup-group">
+                <label>Nombre de joueurs :</label>
+                <select id="nb-players" onchange="updatePlayerInputs()">
+                    <option value="1">1 Joueur</option>
+                    <option value="2" selected>2 Joueurs</option>
+                    <option value="3">3 Joueurs</option>
+                    <option value="4">4 Joueurs</option>
+                </select>
+            </div>
+            <div id="player-names-container"></div>
+            <button class="btn-primary" onclick="startGame()">Lancer la partie</button>
+            <button class="btn-secondary" onclick="showScreen('screen-home')">Retour</button>
+        </section>
+
+        <section id="screen-game" class="screen hidden">
+            <div id="game-header">
+                <h2 id="active-player-name">Joueur</h2>
+                <div id="turn-info">Fléchette <span id="current-dart">1</span> / 3</div>
+            </div>
+
+            <div id="scoreboard-container"></div>
+
+            <div id="input-board">
+                <div id="targets-grid"></div>
+                <div class="modifier-row">
+                    <button id="mod-single" class="active" onclick="setModifier(1)">Simple</button>
+                    <button id="mod-double" onclick="setModifier(2)">Double</button>
+                    <button id="mod-triple" onclick="setModifier(3)">Triple</button>
+                </div>
+                <div class="action-row">
+                    <button class="btn-miss" onclick="hitMiss()">MISS</button>
+                    <button class="btn-undo" onclick="undoLastAction()">Annuler</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="screen-stats" class="screen hidden">
+            <h2>Statistiques globales</h2>
+            <div id="stats-content"></div>
+            <button class="btn-secondary" onclick="showScreen('screen-home')">Retour</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+</html>
