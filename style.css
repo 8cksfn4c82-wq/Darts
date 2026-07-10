@@ -97,3 +97,7 @@ th, td {
 .action-row button { flex: 1; }
 .btn-miss { background-color: #cf6679; }
 .btn-undo { background-color: #3700b3; }
+button {
+    position: relative !important;
+    z-index: 9999 !important;
+}
